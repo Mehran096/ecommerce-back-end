@@ -1,4 +1,6 @@
 /node_modules/
+/_cacache/
+/_locks/
 .env
 /src/uploads/*
 !/src/uploads/.gitkeep

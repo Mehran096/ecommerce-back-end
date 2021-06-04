@@ -50,7 +50,7 @@ app.use("/api", addressRoutes);
 app.use("/api", orderRoutes);
 app.use("/api", adminOrderRoute);
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT;
 
 
 // heroku deploy
@@ -59,7 +59,7 @@ const PORT = process.env.PORT || 8080;
 //   app.use(express.static("client/build"))
 // }
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on port ${process.env.PORT}`);
 });
 

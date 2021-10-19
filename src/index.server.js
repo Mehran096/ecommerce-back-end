@@ -24,7 +24,7 @@ env.config();
 //mongodb+srv://root:<password>@cluster0.8pl1w.mongodb.net/<dbname>?retryWrites=true&w=majority
 mongoose
   .connect(
-    `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@cluster0.hmsue.mongodb.net/${process.env.MONGO_DB_DATABASE}?retryWrites=true&w=majority`,
+    `mongodb://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@cluster0-shard-00-00.hmsue.mongodb.net:27017,cluster0-shard-00-01.hmsue.mongodb.net:27017,cluster0-shard-00-02.hmsue.mongodb.net:27017/${process.env.MONGO_DB_DATABASE}?ssl=true&replicaSet=atlas-12s2zk-shard-0&authSource=admin&retryWrites=true&w=majority`,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -34,6 +34,8 @@ mongoose
   )
   .then(() => {
     console.log("Database connected");
+  }).catch((err) => {
+    console.log(err)
   });
 
 app.use(cors());
